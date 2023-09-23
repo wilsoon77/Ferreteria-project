@@ -30,7 +30,9 @@ public class Producto extends javax.swing.JFrame {
     int cant = 0;
     int iva =0;
     private TableRowSorter trsfiltro;
+    private TableRowSorter trsfiltroid;
     String filtro;
+    String filtroid;
     
     public Producto() {
         initComponents();
@@ -78,6 +80,8 @@ public class Producto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        txtbuscar1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
@@ -299,14 +303,14 @@ public class Producto extends javax.swing.JFrame {
                 btnbuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 48, 49));
+        getContentPane().add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 48, 49));
 
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyTyped(evt);
             }
         });
-        getContentPane().add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 253, -1));
+        getContentPane().add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 253, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/productos (1).png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
@@ -328,6 +332,16 @@ public class Producto extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pantallazo (1).png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 120));
+
+        txtbuscar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbuscar1KeyTyped(evt);
+            }
+        });
+        getContentPane().add(txtbuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 190, 100, -1));
+
+        jLabel11.setText("Busqueda COdigo");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -408,15 +422,15 @@ public class Producto extends javax.swing.JFrame {
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
-       txtbuscar.addKeyListener(new KeyAdapter () {
+       txtbuscar1.addKeyListener(new KeyAdapter () {
 
             @Override
             public void keyReleased(final KeyEvent  e){
 
-                String cadena = txtbuscar.getText();
-                txtbuscar.setText(cadena);
+                String cadena = txtbuscar1.getText();
+                txtbuscar1.setText(cadena);
                 repaint();
-                filtro();
+                filtroid();
 
             }
 
@@ -428,10 +442,14 @@ public class Producto extends javax.swing.JFrame {
     filtro = txtbuscar.getText();
     trsfiltro.setRowFilter(RowFilter.regexFilter(txtbuscar.getText(), 1));
     }
+    void filtroid(){
+    filtroid = txtbuscar1.getText();
+    trsfiltroid.setRowFilter(RowFilter.regexFilter(txtbuscar1.getText(), 0));
+    }
     private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
         // TODO add your handling code here:
-        trsfiltro = new TableRowSorter(TablaDatos.getModel());
-        TablaDatos.setRowSorter(trsfiltro);
+        trsfiltroid = new TableRowSorter(TablaDatos.getModel());
+        TablaDatos.setRowSorter(trsfiltroid);
     }//GEN-LAST:event_txtbuscarKeyTyped
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -440,6 +458,12 @@ public class Producto extends javax.swing.JFrame {
         abrirventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void txtbuscar1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscar1KeyTyped
+        // TODO add your handling code here:
+        trsfiltro = new TableRowSorter(TablaDatos.getModel());
+        TablaDatos.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_txtbuscar1KeyTyped
 
     /**
      * @param args the command line arguments
@@ -625,6 +649,7 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JButton btnbuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -645,6 +670,7 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtbuscar1;
     private javax.swing.JTextField txtiva;
     // End of variables declaration//GEN-END:variables
 }
